@@ -5,7 +5,7 @@ library(scales)
 library(RColorBrewer)
 library(plyr)
 library(grid)
-library(gridBase)
+#library(gridBase)
 library(gridExtra)
 library(data.table)
 library(gtable)
@@ -21,6 +21,7 @@ library(argparse)
 parser <- ArgumentParser()
 parser$add_argument("-a", "--asm",  help="bed file with all the asm mapping")
 parser$add_argument("-b", "--asm2",  help="bed file with a second asm mapping")
+parser$add_argument("-k", "--karyotype",  help="karyotpye file for different genomes")
 parser$add_argument("-p", "--plot",  help="output plot, must have .pdf ext.")
 args <- parser$parse_args()
 
@@ -59,7 +60,7 @@ cex = 0.5
 
 print("Plotting") 
 
-pdf(file=args$plot, width = 9, height =16 )
+pdf(file=args$plot, width = 9, height =11 )
 
 if(is.null(args$asm2)){
   kp <- plotKaryotype(genome="hg38")
